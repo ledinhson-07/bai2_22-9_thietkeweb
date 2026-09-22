@@ -1,0 +1,424 @@
+/*
+ * BÀI TẬP 2: DỰ ÁN CÁ NHÂN — BLOG GIỚI THIỆU BẢN THÂN
+ * Họ tên: Lê Đình Sơn
+ * Lớp: IT K66 UTC2
+ */
+
+/* =========================================
+   #1. USER INTERFACE (Nhóm kiến thức 7)
+   Sử dụng box-sizing để kiểm soát kích thước chuẩn
+   Sử dụng scroll-behavior cho hiệu ứng cuộn mượt mà
+   ========================================= */
+:root {
+    --bg-color: #0f172a;
+    --text-color: #cbd5e1;
+    --primary-color: #8b5cf6;
+    --secondary-color: #38bdf8;
+    --card-bg: #1e293b;
+}
+
+html {
+    scroll-behavior: smooth; /* Cuộn trang mượt */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Kiểm soát mô hình hộp */
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* =========================================
+   #2. SELECTOR (Nhóm kiến thức 1)
+   Sử dụng pseudo-classes (:hover), structural selectors (:nth-child)
+   ========================================= */
+a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* HEADER - Sticky Navigation */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.nav-links a {
+    margin-left: 30px;
+    font-weight: 600;
+}
+
+/* HERO SECTION */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 90vh;
+    padding: 0 10%;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+/* =========================================
+   #3. TEXT EFFECTS (Nhóm kiến thức 3)
+   Sử dụng text-shadow để tạo hiệu ứng phát sáng cho chữ
+   Sử dụng background-clip cho chữ gradient
+   ========================================= */
+.greeting {
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.3); /* Đổ bóng chữ */
+}
+
+.role {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+/* =========================================
+   #4. TRANSITIONS & ANIMATIONS (Nhóm kiến thức 5)
+   Sử dụng keyframes để làm hiệu ứng chữ gõ (typing) và đổi ngôn ngữ
+   ========================================= */
+.typing-text::after {
+    content: "IT K66";
+    animation: typeWords 4s infinite;
+}
+
+@keyframes typeWords {
+    0%, 20% { content: "IT K66"; }
+    40%, 60% { content: "Lập trình viên"; }
+    80%, 100% { content: "Thiết kế Web"; }
+}
+
+.short-intro {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.cta-buttons .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    margin-right: 15px;
+    /* Áp dụng Transition */
+    transition: all 0.3s ease-in-out;
+}
+
+.primary-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+/* =========================================
+   #5. 2D/3D TRANSFORM (Nhóm kiến thức 4)
+   Sử dụng transform: scale() và translateY() khi hover
+   ========================================= */
+.primary-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--primary-color);
+    color: #fff;
+}
+
+.secondary-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   #6. BORDER & BACKGROUND (Nhóm kiến thức 2)
+   Sử dụng border-radius, box-shadow và linear-gradient
+   ========================================= */
+.hero-image img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 50%; /* Bo tròn ảnh */
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); /* Đổ bóng khối */
+    border: 5px solid rgba(139, 92, 246, 0.2);
+    /* Transition và Transform */
+    transition: transform 0.5s ease;
+}
+
+.hero-image img:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* SECTION CHUNG */
+section {
+    padding: 80px 10%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ABOUT SECTION */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-img {
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 0 var(--primary-color);
+}
+
+.about-text strong {
+    color: var(--secondary-color);
+}
+.about-text em {
+    color: #fff;
+}
+.about-text a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+.about-text span {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* SKILLS SECTION */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.skill-pill {
+    padding: 10px 20px;
+    background: var(--card-bg);
+    border-radius: 50px; /* Pill badge */
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, background 0.3s;
+}
+
+.skill-pill:hover {
+    transform: scale(1.1); /* 2D Transform */
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* PROJECTS SECTION */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    /* Box-shadow cho the card */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px); /* 2D Transform */
+    box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+}
+
+.project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    margin-bottom: 10px;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+/* =========================================
+   #7. MULTIPLE COLUMNS (Nhóm kiến thức 6)
+   Sử dụng column-count và column-gap cho timeline
+   ========================================= */
+.timeline {
+    column-count: 2; /* Chia 2 cột */
+    column-gap: 40px;
+    column-rule: 1px solid rgba(255, 255, 255, 0.1); /* Đường chia cột */
+}
+
+.timeline-item {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    break-inside: avoid; /* Ngăn chặn gãy khối giữa cột */
+    border-left: 4px solid var(--primary-color);
+}
+
+.timeline-item h4 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+/* Lên Selector nâng cao - Nth-child */
+.timeline-item:nth-child(even) {
+    border-left-color: var(--secondary-color);
+}
+
+/* BLOG SECTION (ASIDE layout) */
+.blog-container {
+    display: flex;
+    gap: 40px;
+}
+
+.main-articles {
+    flex: 3;
+}
+
+.sidebar {
+    flex: 1;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.blog-post {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-post h3 {
+    margin-bottom: 10px;
+}
+
+.blog-post .date {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+footer {
+    background: var(--card-bg);
+    padding: 40px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links a {
+    margin-right: 20px;
+    font-weight: 600;
+}
+
+.back-to-top {
+    background: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hero-section, .about-content, .blog-container {
+        flex-direction: column;
+    }
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .timeline {
+        column-count: 1;
+    }
+    footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
